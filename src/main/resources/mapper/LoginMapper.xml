@@ -5,4 +5,10 @@
     <select id="login" parameterType="java.lang.String" resultType="Integer">
         SELECT  ID FROM user WHERE username = #{username} AND password = #{password}
     </select>
+    <select id="check" parameterType="java.lang.String" resultType="Integer">
+        SELECT  ID FROM user WHERE username = #{username}
+    </select>
+    <insert id="register" parameterType="java.lang.String">
+        insert into user(username, password) values (#{username}, #{password})
+    </insert>
 </mapper>

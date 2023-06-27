@@ -21,4 +21,14 @@ public class LoginController {
             return ResultData.fail(ReturnCode.USERNAME_OR_PASSWORD_ERROR.getCode(),ReturnCode.USERNAME_OR_PASSWORD_ERROR.getMessage());
         }
     }
+    @PostMapping("/register")
+    public ResultData register (@RequestBody Login login){
+        Integer res = loginService.check(login.getUsername());
+        if(res==null){
+            loginService.register(login.getUsername(),login.getPassword());
+            return ResultData.success(null);
+        }else{
+            return ResultData.fail(ReturnCode.USERNAME_OR_PASSWORD_ERROR.getCode(),"账号已存在");
+        }
+    }
 }

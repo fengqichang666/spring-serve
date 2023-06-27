@@ -12,4 +12,10 @@ public class LoginService {
     public Integer login (String username , String password){
         return loginMapper.login(username,password);
     }
+    public Integer check (String username){
+        return loginMapper.check(username);
+    }
+    public void register (String username, String password){
+        loginMapper.register(username, password);
+    }
 }
